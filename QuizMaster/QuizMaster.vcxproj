@@ -146,6 +146,9 @@
     <ClCompile Include="src\utility\Hashing.ixx" />
     <ClCompile Include="src\view\AuthView.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\controller\StudentController.cpp" />
+    <ClCompile Include="src\service\StudentService.cpp" />
+    <ClCompile Include="src\view\StudentView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\QuestionDetails.h" />
@@ -157,6 +160,9 @@
     <ClInclude Include="headers\controller\AuthController.h" />
     <ClInclude Include="headers\service\AuthService.h" />
     <ClInclude Include="headers\view\AuthView.h" />
+    <ClInclude Include="headers\controller\StudentController.h" />
+    <ClInclude Include="headers\service\StudentService.h" />
+    <ClInclude Include="headers\view\StudentView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

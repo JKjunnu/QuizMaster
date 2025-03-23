@@ -1,7 +1,6 @@
 #include "service/AdminService.h"
 
 import DBConn;
-import Hashing;
 
 AdminService::AdminService(UserDetails& userDetails) : userDetails(userDetails) {}
 

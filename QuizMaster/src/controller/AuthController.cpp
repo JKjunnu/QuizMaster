@@ -1,5 +1,6 @@
 #include "controller/AuthController.h"
 #include "view/AdminView.h"
+#include "view/StudentView.h"
 
 void AuthController::loginUser(std::string& username, std::string& password) {
 
@@ -18,7 +19,9 @@ void AuthController::loginUser(std::string& username, std::string& password) {
     }
 
     if (userDetails.role == "student") {
-        // Under Construction
+        StudentView studentView(userDetails);
+        studentView.displayView();
+
     }
     
     return;

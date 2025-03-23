@@ -31,7 +31,7 @@ void AuthView::displayView() {
 void AuthView::loginView() {
     std::string username;
     std::string password;
-    std::cout << "*****************" << std::endl;
+    std::cout << "******************************" << std::endl;
     std::cout << "Enter username: ";
     std::cin >> username;
     std::cout << "Enter password: ";
