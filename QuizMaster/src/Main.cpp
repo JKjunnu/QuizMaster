@@ -1,5 +1,12 @@
+#include "view/AuthView.h"
 #include <iostream>
-using namespace std;
+
+
 int main() {
-	cout << "Hello World!";
+	
+	AuthViewClass authView;
+	authView.authView();
+	return 0;
+
+	
 }
