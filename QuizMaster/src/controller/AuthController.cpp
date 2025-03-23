@@ -1,34 +1,46 @@
 #include "controller/AuthController.h"
+#include "view/AdminView.h"
 
-void AuthControllerClass::loginUser(std::string& username, std::string& password) {
+void AuthController::loginUser(std::string& username, std::string& password) {
 
-    authenticated details = authServiceClass.authenticateUser(username, password);
+    UserDetails userDetails = authService.authenticateUser(username, password);
 
-    if (!details.isAuthenticated) {
+    if (!userDetails.isAuthenticated) {
+        std::cout << "******************************" << std::endl;
         std::cout << "Invalid credentials! Try again!" << std::endl;
+        std::cout << "******************************" << std::endl;
         return;
     }
 
-    if (details.role == "admin") {
-        std::cout << "Hello admin!";
+    if (userDetails.role == "admin") {
+        AdminView adminView(userDetails);
+        adminView.displayView();
+    }
+
+    if (userDetails.role == "student") {
+        // Under Construction
     }
     
-    std::cout << "User is logged in!" << std::endl;
     return;
 }
 
-void AuthControllerClass::registerUser(std::string& fullName, std::string& username, std::string& password, std::string& confirmPassword) {
+void AuthController::registerUser(std::string& fullName, std::string& username, std::string& password, std::string& confirmPassword) {
     if (password != confirmPassword) {
+        std::cout << "******************************" << std::endl;
         std::cout << "Passwords do not match. Please try again." << std::endl;
+        std::cout << "******************************" << std::endl;
         return;
     }
 
-    if (!authServiceClass.addUserToDB(fullName, username, password)) {
+    if (!authService.addUserToDB(fullName, username, password)) {
+        std::cout << "******************************" << std::endl;
         std::cout << "Please Try again!"<<std::endl;
+        std::cout << "******************************" << std::endl;
         return;
     }
-
+    std::cout << "******************************" << std::endl;
     std::cout << "User created successfully" << std::endl;
+    std::cout << "******************************" << std::endl;
     return;
 
 }

@@ -3,18 +3,18 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <cppconn/statement.h>
+#include <cppconn/prepared_statement.h>
+#include <cppconn/connection.h>
 
-struct authenticated {
-    bool isAuthenticated;
-    std::string role;
-};
+#include "UserDetails.h"
 
-class AuthServiceClass {
-private:
-    std::vector<std::string> number{ "Jatin", "Krishna" };
+
+
+class AuthService {
 
 public:
-    AuthServiceClass() = default;
+    AuthService() = default;
 
     //register methods
 
@@ -22,7 +22,7 @@ public:
 
     //login methods
 
-    authenticated authenticateUser(const std::string& username, const std::string& password);
+    UserDetails authenticateUser(const std::string& username, const std::string& password);
 
     
 };

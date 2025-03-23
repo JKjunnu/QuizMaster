@@ -4,15 +4,15 @@
 #include <string>
 #include "controller/AuthController.h"
 
-class AuthViewClass {
+class AuthView {
 private:
-    int choice;
-    AuthControllerClass authControllerClass;
+    int choice = 0;
+    AuthController authController;
 
 public:
-    AuthViewClass() = default;
+    AuthView() = default;
 
-    void authView();
+    void displayView();
 
 private:
     void loginView();

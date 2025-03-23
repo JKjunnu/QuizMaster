@@ -137,6 +137,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\service\AdminService.cpp" />
+    <ClCompile Include="src\view\AdminView.cpp" />
+    <ClCompile Include="src\controller\AdminController.cpp" />
     <ClCompile Include="src\controller\AuthController.cpp" />
     <ClCompile Include="src\service\AuthService.cpp" />
     <ClCompile Include="src\utility\DBConn.ixx" />
@@ -145,6 +148,12 @@
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="headers\QuestionDetails.h" />
+    <ClInclude Include="headers\QuizDetails.h" />
+    <ClInclude Include="headers\service\AdminService.h" />
+    <ClInclude Include="headers\UserDetails.h" />
+    <ClInclude Include="headers\view\AdminView.h" />
+    <ClInclude Include="headers\controller\AdminController.h" />
     <ClInclude Include="headers\controller\AuthController.h" />
     <ClInclude Include="headers\service\AuthService.h" />
     <ClInclude Include="headers\view\AuthView.h" />

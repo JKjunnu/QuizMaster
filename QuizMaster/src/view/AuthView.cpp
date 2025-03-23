@@ -1,12 +1,14 @@
 #include "view/AuthView.h"
 #include <limits>
 
-void AuthViewClass::authView() {
+void AuthView::displayView() {
     do {
+        std::cout << "******************************" << std::endl;
         std::cout << "Welcome to Quiz Master!" << std::endl;
         std::cout << "1. Login" << std::endl;
         std::cout << "2. Register" << std::endl;
         std::cout << "3. Exit" << std::endl;
+        std::cout << "******************************" << std::endl;
         std::cout << "Please enter your choice: ";
         std::cin >> choice;
 
@@ -26,7 +28,7 @@ void AuthViewClass::authView() {
     } while (choice != 3);
 }
 
-void AuthViewClass::loginView() {
+void AuthView::loginView() {
     std::string username;
     std::string password;
     std::cout << "*****************" << std::endl;
@@ -35,10 +37,10 @@ void AuthViewClass::loginView() {
     std::cout << "Enter password: ";
     std::cin >> password;
 
-    authControllerClass.loginUser(username, password);
+    authController.loginUser(username, password);
 }
 
-void AuthViewClass::registerView() {
+void AuthView::registerView() {
     std::string fullName;
     std::string username;
     std::string password;
@@ -57,5 +59,5 @@ void AuthViewClass::registerView() {
     std::cout << "Confirm password: ";
     std::cin >> confirmPassword;
 
-    authControllerClass.registerUser(fullName, username, password, confirmPassword);
+    authController.registerUser(fullName, username, password, confirmPassword);
 }

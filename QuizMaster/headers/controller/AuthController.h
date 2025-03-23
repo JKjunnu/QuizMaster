@@ -4,12 +4,12 @@
 #include "service/AuthService.h"
 #include <iostream>
 
-class AuthControllerClass {
+class AuthController {
 private:
-    AuthServiceClass authServiceClass;
+    AuthService authService;
 
 public:
-    AuthControllerClass() = default;
+    AuthController() = default;
 
     void loginUser(std::string& username, std::string& password);
 

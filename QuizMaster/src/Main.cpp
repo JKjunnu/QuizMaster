@@ -4,8 +4,8 @@
 
 int main() {
 	
-	AuthViewClass authView;
-	authView.authView();
+	AuthView authView;
+	authView.displayView();
 	return 0;
 
 	

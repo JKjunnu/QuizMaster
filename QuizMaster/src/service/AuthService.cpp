@@ -1,7 +1,4 @@
 #include "service/AuthService.h"
-#include <cppconn/statement.h>
-#include <cppconn/prepared_statement.h>
-#include <cppconn/connection.h>
 
 import DBConn;
 import Hashing;
@@ -9,8 +6,8 @@ import Hashing;
 
 //register implementations
 
-bool AuthServiceClass::addUserToDB(const std::string& fullName, const std::string& username, const std::string& password) {
-    // under construction
+bool AuthService::addUserToDB(const std::string& fullName, const std::string& username, const std::string& password) {
+    
     try {
         sql::Connection* con = connectToDB();
         sql::PreparedStatement* pstmt = con->prepareStatement("INSERT INTO users(fullname, username, password) VALUES(?,?,?)");
@@ -23,7 +20,9 @@ bool AuthServiceClass::addUserToDB(const std::string& fullName, const std::strin
         return true;
     }
     catch (sql::SQLException e) {
+        std::cout << "******************************" << std::endl;
         std::cout << "Could not execute query: " << e.what() << std::endl;
+        std::cout << "******************************" << std::endl;
         return false;
 
     }
@@ -34,37 +33,47 @@ bool AuthServiceClass::addUserToDB(const std::string& fullName, const std::strin
 
 
 
-authenticated AuthServiceClass::authenticateUser(const std::string& username, const std::string& password) {
-    authenticated authResult;
+UserDetails AuthService::authenticateUser(const std::string& username, const std::string& password) {
+    UserDetails userDetails;
     sql::Connection* con = connectToDB();
-    sql::PreparedStatement* pstmt = con->prepareStatement("SELECT password, role FROM users WHERE username=?");
+    sql::PreparedStatement* pstmt = con->prepareStatement("SELECT * FROM users WHERE username=?");
     pstmt->setString(1, username);
 
     sql::ResultSet* res = pstmt->executeQuery();
     if (res->next()) {
         std::string storedPassword = res->getString("password");
         std::string role = res->getString("role");
+        std::string username = res->getString("username");
+        std::string fullName = res->getString("fullname");
+        int userId = res->getInt("user_id");
         delete res;
         delete pstmt;
         delete con;
 
         std::string hashedPassword = sha256(password);
         if (storedPassword == hashedPassword) {
-            authResult.isAuthenticated = true;
-            authResult.role = role;
+            userDetails.isAuthenticated = true;
+            userDetails.role = role;
+            userDetails.username = username;
+            userDetails.fullName = fullName;
+            userDetails.userId = userId;
         }
         else {
-            authResult.isAuthenticated = false;
-            authResult.role = "";
+            userDetails.isAuthenticated = false;
+            userDetails.role = "";
+            userDetails.username = "";
+            userDetails.fullName = "";
         }
     }
     else {
         delete res;
         delete pstmt;
         delete con;
-        authResult.isAuthenticated = false;
-        authResult.role = "";
+        userDetails.isAuthenticated = false;
+        userDetails.role = "";
+        userDetails.username = "";
+        userDetails.fullName = "";
     }
 
-    return authResult;
+    return userDetails;
 }
