@@ -12,6 +12,7 @@
 
 #include "UserDetails.h"
 #include "QuizDetails.h"
+#include "ScoreDetails.h"
 
 
 class StudentService
@@ -25,5 +26,7 @@ public:
 	std::map<int, QuizDetails> getAllQuizzes();
 
 	void saveScore(int& score , int& quizId);
+
+	std::vector<ScoreDetails> quizHistory();
 };
 

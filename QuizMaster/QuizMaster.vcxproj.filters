@@ -89,5 +89,8 @@
     <ClInclude Include="headers\view\StudentView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="headers\ScoreDetails.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

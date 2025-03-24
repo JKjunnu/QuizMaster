@@ -17,5 +17,7 @@ public:
 	void displayView();
 
 	void attemptQuiz();
+
+	void quizHistory();
 };
 

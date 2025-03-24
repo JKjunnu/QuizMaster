@@ -21,7 +21,7 @@ void StudentView::displayView() {
             attemptQuiz();
             break;
         case 2:
-            std::cout << "Quiz History" << std::endl;
+            quizHistory();
             break;
         case 3:
             std::cout << "Logging Out..." << std::endl;
@@ -54,8 +54,7 @@ void StudentView::attemptQuiz() {
     QuizDetails selectedQuiz = quizMap[quizChoice];
 
     std::cout << "*** Selected Quiz Details ***" << std::endl;
-    std::cout << "Quiz ID : " << selectedQuiz.quizId << " | " << "Quiz Name : " << selectedQuiz.quizName << std::endl;
-    std::cout << "No. of Questions : " << selectedQuiz.numberOfQuestions << std::endl;
+    std::cout << "Quiz ID : " << selectedQuiz.quizId << " | " << "Quiz Name : " << " | " << "No. of Questions : " << selectedQuiz.numberOfQuestions << std::endl;
 
     std::cout << "******************************" << std::endl;
     std::cout << "*** Quiz Started! | All the Best! ***" << std::endl;
@@ -87,11 +86,29 @@ void StudentView::attemptQuiz() {
 
     studentController.saveScore(score,quizChoice);
 
+    return;
+}
 
-    
+
+void StudentView::quizHistory() {
+
+    std::vector<ScoreDetails> scoreDetails = studentController.quizHistory();
+    std::cout << "******************************" << std::endl;
+    std::cout << "*** Quiz History ***" << std::endl;
+    std::cout << "******************************" << std::endl;
+
+    for (const auto& score : scoreDetails) {
+        std::cout << "------------------------\n"
+            << "Score ID: " << score.scoreId << "\n"
+            << "Quiz ID: " << score.quizId << "\n"
+            << "Quiz Name: " << score.quizName << "\n"
+            << "Number of Questions: " << score.noOfQuestions << "\n"
+            << "Timestamp: " << score.timeStamp << "\n"
+            << "Total Scored: " << score.totalScored << "\n"
+            << "------------------------\n";
+    }
+
+    std::cout << "******************************" << std::endl;
 
     return;
-
-
-
 }

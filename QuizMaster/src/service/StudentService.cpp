@@ -105,3 +105,50 @@ void StudentService::saveScore(int& score, int&quizId) {
     }
 
 }
+
+
+std::vector<ScoreDetails> StudentService::quizHistory() {
+
+    std::vector<ScoreDetails> scoreDetailsArray;
+
+    try {
+        sql::Connection* con = connectToDB();
+        sql::PreparedStatement* pstmt = con->prepareStatement("SELECT * FROM score NATURAL JOIN quiz WHERE user_id=?");
+        pstmt->setInt(1, userDetails.userId);
+        sql::ResultSet* res = pstmt->executeQuery();
+
+        while (res->next()) {
+
+            ScoreDetails score;
+
+            score.scoreId = res->getInt("score_id");
+            score.quizId = res->getInt("quiz_id");
+            score.totalScored = res->getInt("total_scored");
+            score.timeStamp = res->getString("time_stamp");
+            score.quizName = res->getString("quiz_name");
+            score.noOfQuestions = res->getInt("no_of_questions");
+
+            scoreDetailsArray.push_back(score);
+            
+
+        }
+
+        delete res;
+        delete pstmt;
+        delete con;
+
+        return scoreDetailsArray;
+
+
+
+
+    }
+    catch (sql::SQLException e) {
+        std::cout << "******************************" << std::endl;
+        std::cout << "Could not execute query: " << e.what() << std::endl;
+        std::cout << "******************************" << std::endl;
+        return scoreDetailsArray;
+
+    }
+
+}

@@ -16,5 +16,7 @@ public:
 	std::map<int, QuizDetails> getAllQuizzes();
 
 	void saveScore(int& score, int& quizId);
+
+	std::vector<ScoreDetails> quizHistory();
 };
 

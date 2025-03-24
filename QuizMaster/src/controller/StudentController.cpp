@@ -10,3 +10,7 @@ std::map<int, QuizDetails> StudentController::getAllQuizzes() {
 void StudentController::saveScore(int& score, int& quizId) {
 	studentService.saveScore(score, quizId);
 }
+
+std::vector<ScoreDetails> StudentController::quizHistory() {
+	return studentService.quizHistory();
+}

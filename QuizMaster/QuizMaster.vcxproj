@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="headers\QuestionDetails.h" />
     <ClInclude Include="headers\QuizDetails.h" />
+    <ClInclude Include="headers\ScoreDetails.h" />
     <ClInclude Include="headers\service\AdminService.h" />
     <ClInclude Include="headers\UserDetails.h" />
     <ClInclude Include="headers\view\AdminView.h" />
