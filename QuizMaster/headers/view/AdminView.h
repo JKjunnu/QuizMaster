@@ -19,6 +19,9 @@ public:
 
 	void createQuiz();
 
+	void editQuiz();
+
+	void deleteQuiz();
 
 };
 

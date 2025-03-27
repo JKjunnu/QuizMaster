@@ -54,7 +54,7 @@ void StudentView::attemptQuiz() {
     QuizDetails selectedQuiz = quizMap[quizChoice];
 
     std::cout << "*** Selected Quiz Details ***" << std::endl;
-    std::cout << "Quiz ID : " << selectedQuiz.quizId << " | " << "Quiz Name : " << " | " << "No. of Questions : " << selectedQuiz.numberOfQuestions << std::endl;
+    std::cout << "Quiz ID : " << selectedQuiz.quizId << " | " << "Quiz Name : " << selectedQuiz.quizName << " | " << "No. of Questions : " << selectedQuiz.numberOfQuestions << std::endl;
 
     std::cout << "******************************" << std::endl;
     std::cout << "*** Quiz Started! | All the Best! ***" << std::endl;
