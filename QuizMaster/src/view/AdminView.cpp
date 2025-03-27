@@ -13,6 +13,7 @@ void AdminView::displayView() {
         std::cout << "3. Delete Quiz" << std::endl;
         std::cout << "4. Logout" << std::endl;
         std::cout << "******************************" << std::endl;
+        std::cout << std::endl;
         std::cout << "Please enter your choice: ";
         std::cin >> choice;
 
@@ -40,24 +41,31 @@ void AdminView::createQuiz() {
 
     QuizDetails quizDetails;
     std::string noOfQuestions;
-    
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
     std::cout << "Welcome : " << userDetails.fullName << std::endl;
+    std::cout << std::endl;
     std::cout << "*** Create Quiz ***" << std::endl;
+    std::cout << std::endl;
     std::cout << "Quiz Name : ";
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the input buffer
     std::getline(std::cin, quizDetails.quizName);
     std::cout << "No. of Questions :";
     std::cin >> noOfQuestions;
     quizDetails.numberOfQuestions = std::stoi(noOfQuestions);
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
 
     // Question input
 
     
     for (int i = 0; i < quizDetails.numberOfQuestions; i++) {
         QuestionDetails question;
+        std::cout << std::endl;
         std::cout << "******************************" << std::endl;
+        std::cout << std::endl;
         std::cout << "Question " << i + 1 << " : ";
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the input buffer
         std::getline(std::cin, question.questionText);
@@ -77,7 +85,9 @@ void AdminView::createQuiz() {
         question.correctOption = std::stoi(correctOption);
 
         quizDetails.questions.push_back(question);
+        std::cout << std::endl;
         std::cout << "******************************" << std::endl;
+        std::cout << std::endl;
     }
 
     adminController.saveQuiz(quizDetails);
@@ -89,26 +99,35 @@ void AdminView::editQuiz() {
 
     int quizChoice;
     std::map<int, QuizDetails> quizMap = adminController.getAllQuizzes();
-
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
     std::cout << "Welcome : " << userDetails.fullName << std::endl;
+    std::cout << std::endl;
     std::cout << "*** Choose Quiz ID ***" << std::endl;
+    std::cout << std::endl;
 
     for (const auto& quiz : quizMap) {
         std::cout << "Quiz ID : " << quiz.first << " | " << "Quiz Name : " << quiz.second.quizName << std::endl;
     }
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
 
     std::cout << "Enter Quiz ID : ";
     std::cin >> quizChoice;
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
 
     QuizDetails selectedQuiz = quizMap[quizChoice];
 
     std::cout << "*** Selected Quiz Details ***" << std::endl;
+    std::cout << std::endl;
     std::cout << "Quiz ID : " << selectedQuiz.quizId << " | " << "Quiz Name : " << selectedQuiz.quizName << " | " << "No. of Questions : " << selectedQuiz.numberOfQuestions << std::endl;
-
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
 
     std::string editQuizInput;
     while (editQuizInput != "yes" && editQuizInput != "no") {
@@ -119,8 +138,9 @@ void AdminView::editQuiz() {
             std::cout << "Please check your input: (yes) or (no)" << std::endl;
         }
     }
-
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
 
     if (editQuizInput == "yes") {
 
@@ -136,8 +156,9 @@ void AdminView::editQuiz() {
         selectedQuiz = quizMap[quizChoice];
         std::cout << "Quiz Name Saved!" << std::endl;
     }
-
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
 
     std::string editQuestionInput;
     
@@ -149,8 +170,9 @@ void AdminView::editQuiz() {
             std::cout << " Please check your input: (a) or (b) " << std::endl;
         }
     }
-
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
 
     if (editQuestionInput == "b") {
         return;
@@ -159,12 +181,15 @@ void AdminView::editQuiz() {
     //display questions only not options
     int questionCounter = 1;
     for (QuestionDetails& question : selectedQuiz.questions) {
+        std::cout << std::endl;
         std::cout << "******************************" << std::endl;
+        std::cout << std::endl;
         std::cout << "Q" << questionCounter << ". " << question.questionText << std::endl;
         questionCounter++;
     }
-
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
 
     //edit question
     if (editQuestionInput == "a") {
@@ -182,8 +207,9 @@ void AdminView::editQuiz() {
                 std::cout << "Please check your input: (yes) or (no)" << std::endl;
             }
         }
-
+        std::cout << std::endl;
         std::cout << "******************************" << std::endl;
+        std::cout << std::endl;
 
         if (editQuestionTitleInput == "yes") {
 
@@ -199,9 +225,9 @@ void AdminView::editQuiz() {
             selectedQuiz = quizMap[quizChoice];
             std::cout << "Question Details Saved!" << std::endl;
         }
-
+        std::cout << std::endl;
         std::cout << "******************************" << std::endl;
-
+        std::cout << std::endl;
         
 
         //display options for the question [1,2,3,4]
@@ -215,9 +241,9 @@ void AdminView::editQuiz() {
         }
 
         std::cout << "Correct Option : " << selectedQuiz.questions[inputQuestionNumber-1].correctOption << std::endl;
-
+        std::cout << std::endl;
         std::cout << "******************************" << std::endl;
-
+        std::cout << std::endl;
         int editOptionInput = 0;
         while (editOptionInput < 1 || editOptionInput > 6) {
 
@@ -227,9 +253,9 @@ void AdminView::editQuiz() {
                 std::cout << "Please check your input !" << std::endl;
             }
         }
-
+        std::cout << std::endl;
         std::cout << "******************************" << std::endl;
-
+        std::cout << std::endl;
         if (editOptionInput == 6) {
             return;
         }
@@ -262,9 +288,9 @@ void AdminView::editQuiz() {
             selectedQuiz = quizMap[quizChoice];
             std::cout << "Correct Option Saved!" << std::endl;
         }
-
+        std::cout << std::endl;
         std::cout << "******************************" << std::endl;
-
+        std::cout << std::endl;
     }
 
     ////add question
@@ -283,27 +309,33 @@ void AdminView::deleteQuiz() {
 
     int quizChoice;
     std::map<int, QuizDetails> quizMap = adminController.getAllQuizzes();
-
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
     std::cout << "Welcome : " << userDetails.fullName << std::endl;
+    std::cout << std::endl;
     std::cout << "*** Choose Quiz ID ***" << std::endl;
+    std::cout << std::endl;
 
     for (const auto& quiz : quizMap) {
         std::cout << "Quiz ID : " << quiz.first << " | " << "Quiz Name : " << quiz.second.quizName << std::endl;
     }
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
-
+    std::cout << std::endl;
     std::cout << "Enter Quiz ID  to delete: ";
     std::cin >> quizChoice;
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
-
+    std::cout << std::endl;
     QuizDetails selectedQuiz = quizMap[quizChoice];
 
     std::cout << "*** Selected Quiz Details ***" << std::endl;
+    std::cout << std::endl;
     std::cout << "Quiz ID : " << selectedQuiz.quizId << " | " << "Quiz Name : " << selectedQuiz.quizName << " | " << "No. of Questions : " << selectedQuiz.numberOfQuestions << std::endl;
-
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
-
+    std::cout << std::endl;
     std::string confirmDelete;
     while (confirmDelete != "yes" && confirmDelete != "no") {
 
@@ -325,8 +357,10 @@ void AdminView::deleteQuiz() {
         std::cout << "No changes made!" << std::endl;
     }
 
-    std::cout << "******************************" << std::endl;
 
+    std::cout << std::endl;
+    std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
     return;
 
 }

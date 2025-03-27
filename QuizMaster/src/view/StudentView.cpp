@@ -13,6 +13,7 @@ void StudentView::displayView() {
         std::cout << "2. Quiz History" << std::endl;
         std::cout << "3. Logout" << std::endl;
         std::cout << "******************************" << std::endl;
+        std::cout << std::endl;
         std::cout << "Please enter your choice: ";
         std::cin >> choice;
 
@@ -38,30 +39,49 @@ void StudentView::attemptQuiz() {
     int quizChoice;
     std::map<int, QuizDetails> quizMap = studentController.getAllQuizzes();
 
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
+
     std::cout << "Welcome : " << userDetails.fullName << std::endl;
+    std::cout << std::endl;
     std::cout << "*** Choose Quiz ID ***" << std::endl;
+    std::cout << std::endl;
     
     for (const auto& quiz : quizMap) {
         std::cout << "Quiz ID : " << quiz.first << " | " << "Quiz Name : " << quiz.second.quizName << std::endl;
     }
+
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
 
     std::cout << "Enter Quiz ID : ";
     std::cin >> quizChoice;
+
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
 
     QuizDetails selectedQuiz = quizMap[quizChoice];
 
     std::cout << "*** Selected Quiz Details ***" << std::endl;
+    std::cout << std::endl;
     std::cout << "Quiz ID : " << selectedQuiz.quizId << " | " << "Quiz Name : " << selectedQuiz.quizName << " | " << "No. of Questions : " << selectedQuiz.numberOfQuestions << std::endl;
-
+    std::cout << std::endl;
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
+
     std::cout << "*** Quiz Started! | All the Best! ***" << std::endl;
     
     int questionCounter = 1;
     for (QuestionDetails& question : selectedQuiz.questions) {
+
+        std::cout << std::endl;
         std::cout << "******************************" << std::endl;
+        std::cout << std::endl;
+
         std::cout << "Q" << questionCounter << ". " << question.questionText << std::endl;
         int optionCounter = 1;
         for (std::string& option : question.options) {
@@ -82,7 +102,13 @@ void StudentView::attemptQuiz() {
         }
     }
 
+    std::cout << std::endl;
+
     std::cout << "Score : " << score << std::endl;
+
+    std::cout << std::endl;
+    std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
 
     studentController.saveScore(score,quizChoice);
 
@@ -93,9 +119,13 @@ void StudentView::attemptQuiz() {
 void StudentView::quizHistory() {
 
     std::vector<ScoreDetails> scoreDetails = studentController.quizHistory();
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
     std::cout << "*** Quiz History ***" << std::endl;
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
 
     for (const auto& score : scoreDetails) {
         std::cout << "------------------------\n"
@@ -108,7 +138,9 @@ void StudentView::quizHistory() {
             << "------------------------\n";
     }
 
+    std::cout << std::endl;
     std::cout << "******************************" << std::endl;
+    std::cout << std::endl;
 
     return;
 }

@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <conio.h> // For _getch()
 #include "controller/AuthController.h"
 
 class AuthView {
@@ -17,4 +18,5 @@ public:
 private:
     void loginView();
     void registerView();
+    void getPassword(std::string& password);
 };
